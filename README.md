@@ -39,7 +39,7 @@ python main.py \
 
 ### Options
 
-* `--url`         GraphQL endpoint (default: `http://82.131.214.85:31436/graphql`)
+* `--url`         GraphQL endpoint (default: `http://83.136.253.59:31498/graphql`)
 * `--email`       Admin email address (default: `admin@speednet.htb`)
 * `--password`    New admin password (default: `P@ssw0rd123!`)
 * `--batch-size`  Number of OTP codes per batch (default: `500`)
