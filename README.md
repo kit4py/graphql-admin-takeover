@@ -25,6 +25,8 @@ pip install -r requirements.txt
 ```bash
 python main.py [--url URL] [--email EMAIL] [--password PASS] [--batch-size N] [--interval SEC]
 ```
+then open dev-tools (logged in as normal user) and paste the Admin JWT: eyJhbG....t2mw cookie into the local storage as value.
+Refresh the page
 
 ### Example
 
